@@ -32,13 +32,37 @@ return_val = {
     "SharedSecret": "supersecret",
     "sentAt": "2019-01-26T14:35:20.442869Z"
 }
+#=====================================================================================
 #D Extract the "bssids" list from the "alertData" section of the JSON data
 bssids = return_val["alertData"]["bssids"]
 alert = return_val["alertType"]
 # Send a message to the external messaging application for each broadcast SSID detected
 for value in bssids:
     send_to_application("ALERT: detected a bssid on the network: " + value + " AlertType" + alert)
-#dispaly all index of json return_val.
+#=====================================================================================
+#A
+# bssids = return_val["bssids"]
+# for number in range (return_val["alertData"]["countNode"]):
+# 	send_to_application ("ALERT: detected a bssid on the network: "+ return_val ["alertData"] [bssids] [number])
+#=====================================================================================
+#B. 
+# bssids = return_val["bssids"]
+# for value in bssids: 
+# 	 send_to_application ("ALERT: detected a bssid on the network: "+value)
+#=====================================================================================
+#C
+# count = retutn_val ["alertData"]["countNode"]
+# bssids =return_val ["alertData"] [count] ["bssids"]
+# for value in bssids:
+#     send_to_application ("ALERT: detected a bssid on the network: "+value)
+#=====================================================================================
+#D Extract the "bssids" list from the "alertData" section of the JSON data
+bssids = return_val["alertData"]["bssids"]
+# Send a message to the external messaging application for each broadcast SSID detected
+for value in bssids:
+    send_to_application("ALERT: detected a bssid on the network: " + value)
+#=====================================================================================
+# Function to print the index of all key-value pairs
 def print_index_and_value(data, prefix=""):
     if isinstance(data, dict):
         for key, value in data.items():
