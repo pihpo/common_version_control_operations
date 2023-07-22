@@ -32,3 +32,9 @@ return_val = {
     "SharedSecret": "supersecret",
     "sentAt": "2019-01-26T14:35:20.442869Z"
 }
+#D Extract the "bssids" list from the "alertData" section of the JSON data
+bssids = return_val["alertData"]["bssids"]
+alert = return_val["alertType"]
+# Send a message to the external messaging application for each broadcast SSID detected
+for value in bssids:
+    send_to_application("ALERT: detected a bssid on the network: " + value + " AlertType" + alert)
